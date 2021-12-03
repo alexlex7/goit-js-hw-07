@@ -34,6 +34,18 @@ function showModal() {
 `);
 
     instance.show();
+
+    const visible = instance.visible();
+
+    if (visible) {
+      document.addEventListener("keydown", onPressEscHandler);
+      function onPressEscHandler({ code }) {
+        if (code === "Escape") {
+          instance.close();
+          document.removeEventListener("keydown", onPressEscHandler);
+        }
+      }
+    }
   });
 }
 
