@@ -1,23 +1,21 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
-const items = Array(50)
-  .fill("")
-  .map((item, index) => {
-    return {
-      preview: `https://picsum.photos/seed/picsum${index}/510/340?random=${index}`,
-      original: `https://picsum.photos/seed/picsum${index}/1280/854?random=${index}`,
-      description: "Hokkaido Flower",
-    };
-  });
-
-const newGalleryItems = galleryItems.concat(items);
-console.log("~ newGalleryItems", newGalleryItems);
-
+const newGalleryItems = galleryItems.concat(
+  Array(51)
+    .fill("")
+    .map((item, index) => {
+      return {
+        preview: `https://picsum.photos/seed/picsum${index}/510/340?random=${index}.jpg`,
+        original: `https://picsum.photos/seed/picsum${index}/1280/854?random=${index}.jpg`,
+        description: "Hokkaido Flower",
+      };
+    })
+);
 const galleryEl = document.querySelector(".gallery");
-const galleryMarkup = createGalleryMarkup(galleryItems);
+const galleryMarkup = createGalleryMarkup(newGalleryItems);
 galleryEl.insertAdjacentHTML("beforeend", galleryMarkup);
 
-function createGalleryMarkup(galleryItems) {
+function createGalleryMarkup(newGalleryItems) {
   const markup = newGalleryItems
     .map(({ preview, original, description }) => {
       return `<div class="gallery__item">
